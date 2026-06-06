@@ -1,4 +1,4 @@
-name: Build APK from 5 records cut gaps ZIP
+name: Build APK from distribution only ZIP
 
 on:
   workflow_dispatch:
@@ -17,9 +17,9 @@ jobs:
 
       - name: Verify exact ZIP file
         run: |
-          if [ ! -f "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_CUT_GAPS_ONLY.zip" ]; then
+          if [ ! -f "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_DISTRIBUTION_ONLY.zip" ]; then
             echo "ERROR: الملف غير موجود بالاسم المطلوب:"
-            echo "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_CUT_GAPS_ONLY.zip"
+            echo "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_DISTRIBUTION_ONLY.zip"
             echo "الملفات الموجودة:"
             ls -lah
             exit 1
@@ -29,7 +29,7 @@ jobs:
         run: |
           rm -rf project
           mkdir project
-          unzip -q "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_CUT_GAPS_ONLY.zip" -d project
+          unzip -q "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_5_RECORDS_DISTRIBUTION_ONLY.zip" -d project
 
       - name: Find Android project
         id: android_project
@@ -61,10 +61,10 @@ jobs:
       - name: Rename APK
         run: |
           mkdir -p final-apk
-          cp "${{ steps.android_project.outputs.project_dir }}"/app/build/outputs/apk/debug/*.apk "final-apk/sira-mowathaba-5-records-cut-gaps.apk"
+          cp "${{ steps.android_project.outputs.project_dir }}"/app/build/outputs/apk/debug/*.apk "final-apk/sira-mowathaba-distribution-only.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: sira-mowathaba-5-records-cut-gaps-apk
+          name: sira-mowathaba-distribution-only-apk
           path: final-apk/*.apk
