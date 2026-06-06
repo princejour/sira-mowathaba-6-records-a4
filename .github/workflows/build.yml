@@ -1,4 +1,4 @@
-name: Build PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE
+name: Build APK from exact uploaded ZIP
 
 on:
   workflow_dispatch:
@@ -17,9 +17,9 @@ jobs:
 
       - name: Verify exact ZIP file
         run: |
-          if [ ! -f "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE.zip" ]; then
+          if [ ! -f "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE (1).zip" ]; then
             echo "ERROR: الملف غير موجود بالاسم المطلوب:"
-            echo "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE.zip"
+            echo "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE (1).zip"
             echo "الملفات الموجودة:"
             ls -lah
             exit 1
@@ -29,7 +29,7 @@ jobs:
         run: |
           rm -rf project
           mkdir project
-          unzip -q "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE.zip" -d project
+          unzip -q "PRINT_BUTTON_REAL_ATTEMPT_COMPILE_FIXED_BUTTONS_DOWN_ONLY_MULTI_RECORDS_A4_FIXED_6_RECORDS_NO_HEADER_FILL_PAGE (1).zip" -d project
 
       - name: Find Android project
         id: android_project
